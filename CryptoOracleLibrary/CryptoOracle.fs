@@ -38,8 +38,9 @@ let fetchUrlOKAsync symbol url =
         try
             use! resp = req.AsyncGetResponse()  
             use webResponse=resp :?> HttpWebResponse
-            raise (NoSuchElement(symbol))
-            return 0uy
+            //raise (NoSuchElement(symbol))
+            //return 0uy
+            return symbol
         with 
         | :? WebException as webEx when (webEx.Response :? HttpWebResponse) -> 
             let httpWebResponse = webEx.Response :?> HttpWebResponse
@@ -55,7 +56,7 @@ let fetchUrlOKAsync symbol url =
         }
         
 
-let tryUrl symbol cipher = fetchUrlOKAsync symbol ("http://crypto-class.appspot.com/po?er=" + cipher)
+let tryUrl symbol cipher = fetchUrlOKAsync symbol ("http://babaj.tales.sen.symantec.com/CryptoService/OracleService.svc/Decrypt?cipher=" + cipher)
 
 
 
@@ -86,7 +87,7 @@ let processBlock1 (blockIndex: int, IV: byte[], cipher: byte[])=
                                                 let acc=ref (Array.create 16 0uy)
                                                 let i= ref 0
                                                 while !i < 16 do 
-                                                    let! foundSymbol=processSymbol ([|2uy..128uy|], IV, !acc, cipher, !i)
+                                                    let! foundSymbol=processSymbol ([|1uy..128uy|], IV, !acc, cipher, !i)
                                                     observer.OnNext ((blockIndex*16+15- !i), (char)foundSymbol)
                                                     acc := Array.init 16 (fun element-> (!acc).[element] ^^^ (if element=15 - !i then foundSymbol else 0uy)) 
                                                     i:=!i+1

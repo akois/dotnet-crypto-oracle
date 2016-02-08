@@ -32,7 +32,10 @@ namespace OracleUI
 
         private void OracleMainForm_Load(object sender, EventArgs e)
         {
-            this.textCypher.Text ="f20bdba6ff29eed7b046d1df9fb7000058b1ffb4210a580f748b4ac714c001bd4a61044426fb515dad3f21f18aa577c0bdf302936266926ff37dbf7035d5eeb4";
+            //this.textCypher.Text ="f20bdba6ff29eed7b046d1df9fb7000058b1ffb4210a580f748b4ac714c001bd4a61044426fb515dad3f21f18aa577c0bdf302936266926ff37dbf7035d5eeb4";
+            //this.textCypher.Text = "5665727952616e646f6d495631323334ab30cdf1e3fbc97c41c1e44cb22e33ed40bff4855d03ea9bd4ad8624720be657";
+            this.textCypher.Text = "5665727952616e646f6d495631323334ab30cdf1e3fbc97c41c1e44cb22e33ed40bff4855d03ea9bd4ad8624720be657";
+            
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
